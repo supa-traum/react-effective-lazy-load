@@ -1,5 +1,4 @@
 import { createElement } from "react";
-import { Route } from "react-router-dom";
 import useRouteComponent, { RouteComponentProps } from "../hooks/useRouteComponent";
 
 export default function PageRoute ({ path ,type }: RouteComponentProps){
@@ -7,7 +6,5 @@ export default function PageRoute ({ path ,type }: RouteComponentProps){
 
   console.log('component' , component);
 
-  return (
-    <Route path={path} element={component ? createElement(component) : null} />
-  )
+  return component ? createElement(component) : null;
 }

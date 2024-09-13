@@ -5,8 +5,10 @@ export interface RouteComponentProps {
   type : 'PAGES' | 'LAYER';
 }
 
-const pageImport = (path:string) => import(`pages${path}`);
-const layerImport = (path:string) => import(`layer${path}`);
+// 호진 FIXME: import 모듈 찾는걸 해결해야함!
+// root path일 경우에는 빈값으로 import 해야지 index 파일이 보임!
+const pageImport = (path:string) => import(`../../pages${path === '/' ? '' : path}`);
+const layerImport = (path:string) => import(`@/layer${path}`);
 
 export default function useRouteComponent({path, type} : RouteComponentProps){
   const [component , setComponent] = useState(null);
